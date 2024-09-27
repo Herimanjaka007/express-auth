@@ -1,0 +1,26 @@
+<%- include("partials/head") %>
+    <%- include("partials/navbar.ejs") %>
+
+        <div class="container w-50 mx-auto border rounded shadow-sm mt-3">
+            <form action="/" method="post">
+                <div class="my-3">
+                    <label for="firstName" class="form-label">First name:</label>
+                    <input type="text" name="firstName" id="firstName" class="form-control">
+                </div>
+                <div class="mb-3"><label for="lastName" class="form-label">Last name:</label>
+                    <input type="text" name="lastName" id="lastName" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">username</label>
+                    <input type="text" name="username" id="" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">password</label>
+                    <input type="password" name="password" id="password" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary d-block ms-auto">submit</button>
+                </div>
+            </form>
+        </div>
+        <%- include("partials/foot") %>
