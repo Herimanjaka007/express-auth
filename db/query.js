@@ -45,4 +45,12 @@ export default class CustomQuery {
         const { rows } = await pool.query("SELECT * FROM users, posts WHERE users.id = posts.user_id;");
         return rows;
     }
+
+    static getMessagesByAuthor = async ({ id }) => {
+        const { rows } = await pool.query(`
+            SELECT * FROM users, posts WHERE users.id = posts.user_id
+            AND users.id = $1
+            `, [id]);
+        return rows;
+    }
 }
