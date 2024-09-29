@@ -10,6 +10,7 @@ import signinRouter from "./routers/signinRouter.js";
 import signupRouter from "./routers/signupRouter.js";
 import messageRouter from "./routers/messageRouter.js";
 import dashboardRouter from "./routers/dashboardRouter.js";
+import memberRouter from "./routers/memberRouter.js";
 import CustomQuery from "./db/query.js";
 
 const app = express();
@@ -55,6 +56,7 @@ app.use("/signin", signinRouter);
 app.use("/signup", signupRouter);
 app.use("/message", messageRouter);
 app.use("/dashboard", dashboardRouter);
+app.use("/member", memberRouter);
 app.get("/logout", (req, res, next) => {
     req.logout(err => {
         if (err) return next(err);

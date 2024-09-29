@@ -53,4 +53,15 @@ export default class CustomQuery {
             `, [id]);
         return rows;
     }
+
+    static makeMember = async ({ id }) => {
+        try {
+            await pool.query(`
+                UPDATE users SET is_member = TRUE
+                WHERE users.id = $1
+                `, [id]);
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
 }

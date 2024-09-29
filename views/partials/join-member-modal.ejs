@@ -1,0 +1,22 @@
+<div class="modal fade" id="joinMemberModal" tabindex="-1" aria-labelledby="joinMemberModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form action="/member" method="post">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="joinMemberModalLabel">Pass phrase to become a member.</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="passphrase" class="form-label">Pass phrase</label>
+              <input required minlength="2" name="passphrase" type="text" class="form-control" id="passphrase">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

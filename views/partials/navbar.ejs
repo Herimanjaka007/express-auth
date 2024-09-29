@@ -19,13 +19,22 @@
                 </div>
                 <div class="d-flex ms-auto">
                     <% if (locals.user) { %>
-                        <li class="nav-item bg-primary rounded me-5">
+                        <li class="nav-item bg-primary rounded">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#createPostModal">
                                 Post message
                             </button>
                             <%- include("create-post-modal") %>
                         </li>
+                        <% if (!locals.user?.is_member){ %>
+                            <li class="nav-item rounded me-4"></li>
+                                <button type="button" class="btn btn-danger me-5" data-bs-toggle="modal"
+                                    data-bs-target="#joinMemberModal">
+                                    Join Member
+                                </button>
+                            <%- include("join-member-modal") %>
+                            </li>
+                        <% } %>
                         <li class="nav-link">Welcome <%= user.first_name %>,</li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/logout">Logout</a>

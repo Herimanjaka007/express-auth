@@ -24,8 +24,14 @@
                                 <%= new Date(message.date_creation).toLocaleString() %>
                             </span>
                         </div>
-                        <small class="text-muted">By <%= (locals.user && user.is_member) ? message.first_name
-                                : "Anonymous" %></small>
+                        <small class="text-muted">
+                            By 
+                            <% if (locals.user && user.is_member) { %>
+                                <%= message.first_name === user.first_name ? "you" : message.first_name %>
+                            <% }else{  %>
+                                Anonymous
+                            <% } %>
+                        </small>
                     </div>
                     <div class="card-body">
                         <p class="card-text">
