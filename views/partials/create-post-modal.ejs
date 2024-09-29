@@ -1,0 +1,26 @@
+<div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form action="/message" method="post">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createPostModalLabel">Post a message (members only can see your info)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="postTitle" class="form-label">Title</label>
+            <input required minlength="2" name="title" type="text" class="form-control" id="postTitle">
+          </div>
+          <div class="mb-3">
+            <label for="postMessage" class="form-label">Message</label>
+            <textarea required minlength="4" name="message" class="form-control" id="postMessage" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

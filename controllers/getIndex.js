@@ -1,6 +1,9 @@
-const getIndex = (req, res, next) => {
+import CustomQuery from "../db/query.js";
+
+const getIndex = async (req, res, next) => {
     const { user } = req;
-    return res.render("index", { user });
+    const messages = await CustomQuery.getMessagesJoinAuhtor();
+    return res.render("index", { user, messages });
 }
 
 export default getIndex;

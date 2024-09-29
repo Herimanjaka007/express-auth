@@ -1,4 +1,38 @@
 <%- include("partials/head") %>
-<%- include("partials/navbar") %>
-
-<%- include("partials/foot") %>
+    <%- include("partials/navbar") %>
+        <div class="container mt-5 w-75 mx-auto">
+            <div class="row w-50 gap-4">
+                <% if (!locals.user){ %>
+                    <div class="alert alert-info col">
+                        <p>Note: Sign up to create your message.</p>
+                    </div>
+                <% } %>
+                <% if (!(locals.user && locals.user.is_member)){ %>
+                    <div class="alert alert-info col">
+                        <p>Note: Members only can see the author.</p>
+                    </div>
+                <% } %>
+            </div>
+            <% if(locals.messages){ messages.forEach( message=> {%>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="row">
+                            <h5 class="card-title col-8">
+                                <%= message.title %>
+                            </h5>
+                            <span class="col-3 text-muted ms-auto">
+                                <%= new Date(message.date_creation).toLocaleString() %>
+                            </span>
+                        </div>
+                        <small class="text-muted">By <%= (locals.user && user.is_member) ? message.first_name
+                                : "Anonymous" %></small>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <%= message.content %>
+                        </p>
+                    </div>
+                </div>
+                <% })} %>
+        </div>
+        <%- include("partials/foot") %>

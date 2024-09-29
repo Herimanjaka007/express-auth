@@ -25,4 +25,24 @@ export default class CustomQuery {
         const [user] = rows;
         return user;
     }
+
+    static createMessage = async ({ title, message, id }) => {
+        try {
+            await pool.query("INSERT INTO posts(title, content, user_id) VALUES ($1, $2, $3)",
+                [title, message, id]
+            )
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    static getMessages = async () => {
+        const { rows } = await pool.query("SELECT * FROM posts");
+        return rows;
+    }
+
+    static getMessagesJoinAuhtor = async () => {
+        const { rows } = await pool.query("SELECT * FROM users, posts WHERE users.id = posts.user_id;");
+        return rows;
+    }
 }

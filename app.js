@@ -8,6 +8,7 @@ import { Strategy as LocalStrategy } from "passport-local";
 import indexRouter from "./routers/indexRouter.js";
 import signinRouter from "./routers/signinRouter.js";
 import signupRouter from "./routers/signupRouter.js";
+import messageRouter from "./routers/messageRouter.js";
 import CustomQuery from "./db/query.js";
 
 const app = express();
@@ -51,6 +52,7 @@ app.use(passport.session());
 app.use("/", indexRouter);
 app.use("/signin", signinRouter);
 app.use("/signup", signupRouter);
+app.use("/message", messageRouter);
 app.get("/logout", (req, res, next) => {
     req.logout(err => {
         if (err) return next(err);
