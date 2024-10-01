@@ -4,7 +4,7 @@ const messageValidator = [
     check("title")
         .trim()
         .notEmpty().withMessage("Title is required"),
-    check("message")
+    check("content")
         .trim()
         .notEmpty().withMessage("Message content is required"),
     (req, res, next) => {

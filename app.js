@@ -11,13 +11,17 @@ import signupRouter from "./routers/signupRouter.js";
 import messageRouter from "./routers/messageRouter.js";
 import dashboardRouter from "./routers/dashboardRouter.js";
 import memberRouter from "./routers/memberRouter.js";
-import CustomQuery from "./db/query.js";
+import prisma from "./db/prisma.js";
 
 const app = express();
 
 passport.use(new LocalStrategy(async (username, password, done) => {
     try {
-        const user = await CustomQuery.getUserByUsername(username);
+        const user = await prisma.users.findUnique({
+            where: {
+                username
+            }
+        });
         if (!user) {
             return done(null, false, { message: "Wrong username" });
         }
@@ -33,7 +37,11 @@ passport.use(new LocalStrategy(async (username, password, done) => {
 passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser(async (id, done) => {
     try {
-        const user = await CustomQuery.getUserById(id);
+        const user = await prisma.users.findUnique({
+            where: {
+                id
+            }
+        });
         return done(null, user);
     } catch (error) {
         return done(error);

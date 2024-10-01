@@ -1,4 +1,4 @@
-import CustomQuery from "../db/query.js";
+import prisma from "../db/prisma.js";
 
 const postMember = async (req, res) => {
     const { passphrase } = req.body;
@@ -6,7 +6,14 @@ const postMember = async (req, res) => {
         return res.redirect("/");
     }
     if (passphrase === "odin") {
-        await CustomQuery.makeMember(req.user);
+        await prisma.users.update({
+            where: {
+                id: req.user.id
+            },
+            data: {
+                is_member: true
+            }
+        })
         res.redirect("/");
     }
 }
