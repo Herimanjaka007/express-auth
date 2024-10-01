@@ -1,12 +1,12 @@
 import { check, validationResult } from 'express-validator';
 
 const signupValidator = [
-    check('firstName')
+    check('first_name')
         .trim()
         .notEmpty().withMessage('First name is required')
         .isLength({ min: 3 }).withMessage('First name must be at least 3 characters long'),
 
-    check('lastName')
+    check('last_name')
         .trim()
         .notEmpty().withMessage('Last name is required')
         .isLength({ min: 3 }).withMessage('Last name must be at least 3 characters long'),

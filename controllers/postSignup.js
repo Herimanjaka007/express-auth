@@ -1,4 +1,4 @@
-import CustomQuery from "../db/query.js";
+import prisma from "../db/prisma.js";
 import bcryptjs from "bcryptjs";
 
 const { hash } = bcryptjs;
@@ -9,7 +9,9 @@ const postSignup = async (req, res, next) => {
         if (err) {
             res.end();
         }
-        await CustomQuery.createUser({ ...req.body, password: hashedPassword });
+        await prisma.users.create({
+            data: { ...req.body, password: hashedPassword }
+        })
     })
     res.redirect("/signin");
 };
