@@ -27,7 +27,7 @@
                         <small class="text-muted">
                             By 
                             <% if (locals.user && user.is_member) { %>
-                                <%= message.first_name === user.first_name ? "you" : message.first_name %>
+                                <%= message.users.first_name === user.first_name ? "you" : message.users.first_name %>
                             <% }else{  %>
                                 Anonymous
                             <% } %>
